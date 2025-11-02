@@ -54,6 +54,7 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_CC9B055298FC41EFA27D29BC611739BA }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_030BD7D572E9426B9E54D2BF923FD802 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_63C42E4358CB4F82896C49512A3DF013 }}
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -63,3 +64,4 @@ jobs:
           slot-name: 'Production'
           package: '*.jar'
           
+
