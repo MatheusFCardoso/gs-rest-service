@@ -44,10 +44,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: java-app
-          path: ./java-app   # <-- agora extrai pra pasta específica
+          path: ./java-app
 
       - name: List artifact contents
-        run: ls -la ./java-app   # conferindo se o .jar tá aqui
+        run: ls -la ./java-app
+
+      - name: Set JAR file path variable
+        id: jar
+        run: echo "file=$(ls ./java-app/*.jar)" >> $GITHUB_ENV
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -62,4 +66,4 @@ jobs:
         with:
           app-name: 'hazforge-postech-fiap'
           slot-name: 'Production'
-          package: './java-app/*.jar'   # caminho correto pro artifact baixado
+          package: ${{ env.file }}
