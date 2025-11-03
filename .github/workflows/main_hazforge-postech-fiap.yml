@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: '${{ github.workspace }}/complete/target/*.jar'
+          path: '${{ github.workspace }}/complete/target/*.war'
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,8 +49,8 @@ jobs:
       - name: List artifact contents
         run: ls -la ./java-app
 
-      - name: Set JAR file path variable
-        id: jar
+      - name: Set WAR file path variable
+        id: war
         run: echo "file=$(ls ./java-app/*.war)" >> $GITHUB_ENV
 
       - name: Login to Azure
@@ -67,4 +67,5 @@ jobs:
           app-name: 'hazforge-postech-fiap'
           slot-name: 'Production'
           package: ${{ env.file }}
+
 
