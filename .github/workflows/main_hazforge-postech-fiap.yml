@@ -44,9 +44,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: java-app
+          path: ./java-app   # <-- agora extrai pra pasta específica
 
       - name: List artifact contents
-        run: ls -la ./java-app   # só pra conferir se o .jar tá aqui
+        run: ls -la ./java-app   # conferindo se o .jar tá aqui
 
       - name: Login to Azure
         uses: azure/login@v2
