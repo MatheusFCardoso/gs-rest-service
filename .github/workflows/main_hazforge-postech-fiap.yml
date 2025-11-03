@@ -49,6 +49,7 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
+          auth-type: IDENTITY
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_BB332F77CC694EE598F9D8A2190F1BCE }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B1E4A8255F9F4E1F839122EC3B90BE17 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_744C3F147AFE4EB4A0DFF4D943C26B7B }}
@@ -61,3 +62,4 @@ jobs:
           slot-name: 'Production'
           package: '*.war'
           
+
